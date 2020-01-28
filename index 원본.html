@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>CGV</title>
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+   <link rel="stylesheet" href="css/swiper.min.css">
+   <!-- <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css"> -->
+   <link rel="stylesheet" href="css/style.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="js/swiper.min.js"></script>
+   <!-- <script src="https://unpkg.com/swiper/js/swiper.min.js"></script> -->
+   <script src="js/cgv.js"></script>
+
+
+   <script>
+      // $(function(){
+      //    // 검색창 열기/닫기 
+      //    // - 검색창을 열고 닫는다. 
+      //    // btn-search-open의 아이콘의 모양을 변경한다. fa-search/fa-times
+      //    $('#btn-search-open').click(function (e) { 
+      //       e.preventDefault();
+      //       $(this).toggleClass('fa-search fa-times');
+      //       $('.search').toggleClass('open');
+      //       // 무조건 탭메뉴영역은 숨긴다.
+      //       $('.search-tab').hide();
+      //       // 입력창에 값이 있다면 초기화 
+      //       $('.search input').val('');
+      //    });
+
+      //    // 검색입력창에 포커스가 발생되면 탭메뉴영역이 열린다. 
+      //    $('.search input').focus(function (e) { 
+      //       e.preventDefault();
+      //       $('.search-tab').show();
+      //    });
+
+      //    //탭메뉴 
+      //    //1. 탭메뉴의 활성화상태를 변경시킨다. 
+      //    //2. 해당 탭메뉴의 컨텐츠만 활성화 시킨다.
+      //    $('.tab-nav a').click(function (e) { 
+      //       e.preventDefault();
+      //       $('.tab-nav a').removeClass();
+      //       $(this).addClass('active');
+      //       var id=$(this).attr('href');
+      //       $('.tab-contents > div').hide();
+      //       $(id).show();
+      //    });
+
+      //    //최근검색어 삭제하기 
+      //    $('#recent').on('click', 'button', function () {
+      //       $(this).parent().remove();
+      //       // 지워야할 키워드값을 가져온다.
+      //       var keyword=$(this).prev().text();
+      //       // 저장소의 데이터를 가져온다. 
+      //       var keywords=getKeywords();            
+      //       //배열.splice(지워야할 키워드의 인덱스위치, 지우는 수)
+      //       keywords.splice(keywords.indexOf(keyword),1);
+      //       //바뀐 배열구조를 다시 저장소에 저장 
+      //       setKeywords(keywords);
+
+      //       //저장된 키워드가 없다면 메세지를 생성
+      //       if(keywords.length==0){
+      //          $('#recent').append('<p>최근 검색어가 없습니다.</p>');
+      //       }
+      //    });
+
+
+      //    //최근검색어 목록가져오기
+      //    var keywords=getKeywords();
+      //    //최근검색어가 있다면
+      //    if(keywords.length != 0){
+      //       for (const i in keywords) {
+      //          $('#recent ul').append('<li><a href="#">'+keywords[i]+'</a><button class="fas fa-times"></button></li>')
+      //       }
+      //    }else{
+      //       // 최근검색어가 없다면 메세지 생성
+      //       $('#recent').append('<p>최근 검색어가 없습니다.</p>');
+      //    }
+
+
+      //    //최근검색어의 키워드를 누르면 텍스트입력창에 값 넣기 
+      //    $('#recent').on('click', 'a', function (e) {
+      //       e.preventDefault();
+      //       var keyword=$(this).text();
+      //       $('.search input').val(keyword);
+      //    })
+
+      // })
+
+      // //저장소에서 키워드 가져오기
+      // function getKeywords() {
+      //    var keywords=[];
+      //    var jsonKeywords=localStorage.getItem('keywords');
+      //    //저장소에 값이 있을 경우에는keywords에 키워드값이 들어있는 배열구조를 넣어주고 반환한다.
+      //    if(jsonKeywords!=null){
+      //       // json문자열데이터 -> object형태로 변환
+      //       keywords=JSON.parse(jsonKeywords);
+      //    }
+      //    //저장소에 값이 없을 경우(null값)에는 빈 배열구조를 반환한다.
+      //    return keywords;
+      // }
+
+      // //저장소에 키워드 저장하기 
+      // function setKeywords(keywords) {
+      //    // object형태 -> json문자열데이터
+      //    var jsonKeywords=JSON.stringify(keywords);
+      //    localStorage.setItem('keywords',jsonKeywords);
+      // }      
+
+      // //입력창에 검색어 입력하고 검색버튼 누르면 
+      // //저장소에 키워드 저장하기 & 키워드목록에 붙이기
+      // function search() {         
+      //    var keyword=$('.search input').val();
+      //    if(keyword != ''){
+      //       //저장소에서 데이터 가져오기(배열구조)
+      //       var keywords=getKeywords();
+      //       //내가 현재 입력한 키워드의 값을 배열에 들어있는 값과 검사해서 일치하는 것이 없을 경우
+      //       //저장소에 새로운 키워드를 저장해야한다.
+      //       if(keywords.indexOf(keyword) == -1){
+      //          // 배열의 0번째위치에 새로운 키워드를 저장한다.                
+      //          keywords.unshift(keyword);
+      //          setKeywords(keywords);
+      //          $('#recent ul').prepend('<li><a href="#">'+keyword+'</a><button class="fas fa-times"></button></li>')
+      //       }
+      //       // 배열에 키워드가 존재하면 
+      //       if(keywords.length!=0){
+      //          // 최근 검색어가 없습니다는 제거한다.
+      //          $('#recent p').remove();
+      //       }            
+      //    }         
+         
+      //    $('.search input').val('');         
+      // }
+
+
+   </script>
+
+
+
+
+
+   <!-- <script>
+      $(function(){
+         //배너팝업닫기 
+         $('#top-banner button').click(function(){
+            $('#top-banner').slideUp();            
+         })
+
+         var swiper = new Swiper('.swiper-container', {
+            navigation: {
+               nextEl: '.next',
+               prevEl: '.prev',
+            },
+            loop:true,
+            pagination: {
+               el: '.pagination',
+               clickable: true,         
+            },
+            effect:'fade',
+            autoplay: {
+               delay: 2500,
+               disableOnInteraction: false,
+            },
+         });
+      })
+   </script> -->
+
+
+
+
+
+</head>
+<body>
+   <!-- #top-banner -->
+   <aside id="top-banner">
+      <div class="center">
+         <a href="#"><img src="img/0103베너_980x80.jpg" alt="나쁜 녀석들 포에버"></a>
+         <button>
+            <i class="fas fa-times"></i>
+            <span class="blind">닫기</span>
+         </button>
+      </div>
+   </aside>
+   <!-- /#top-banner -->
+
+   <!-- header -->
+   <header>
+      <div class="si">
+         <div class="sign">
+            <a href="#">로그인</a>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+            <a href="#">회원가입</a>
+         </div>
+      </div>   
+      <div class="center">
+         <div class="gnb">
+            <h1>
+               <img src="img/cultureplex.png" alt="cultureplex">
+            </h1>
+            <h2>
+               <a href="#"><img src="img/cgv.png" alt="cgv"></a>
+               
+            </h2>
+            <nav>
+               <ul class="navi">
+                  <li>
+                     <a href="#"><span>예매</span></a>
+                     <ul class="su">
+                        <li><a href="#" style="color: #e71a0f;"><span>빠른예매</span></a></li>
+                        <li><a href="#"><span>상영 시간표</span></a></li>
+                     </ul>
+                  </li>
+                  <li>
+                     <a href="#"><span>영화</span></a>
+                     <ul class="su">
+                        <li><a href="#"><span>무비차트</span></a></li>
+                        <li><a href="#"><span>HD 트레일러</span></a></li>
+                        <li><a href="#"><span>무비파인더</span></a></li>
+                        <li><a href="#"><span>CGV 아트하우스</span></a></li>
+                     </ul>
+                  </li>
+                  <li>
+                     <a href="#"><span>이벤트&컬처</span></a>
+                     <ul class="su">
+                        <li><a href="#"><span>이벤트</span></a></li>
+                        <li><a href="#"><span>기프트샾</span></a></li>
+                        <li><a href="#"><span>매거진</span></a></li>
+                     </ul>
+                  </li>
+                  <li>
+                     <a href="#"><span>극장</span></a>
+                     <ul class="su">
+                        <li><a href="#"><span>CGV극장</span></a></li>
+                        <li><a href="#"><span>특별관</span></a></li>
+                        <li><a href="#"><span>CLUB 서비스</span></a></li>
+                     </ul>
+                  </li>
+               </ul>
+                <!-- pc용 2depth메뉴가 펼쳐질 때 뒤에 깔릴 배경 -->
+               <div class="gnb-bg"></div>
+            </nav>
+         </div>
+
+
+
+
+         
+         
+         
+         
+         
+         <form action="#">
+            <label for="search" class="blind">영화검색</label>
+            <input type="text" id="search" placeholder="영화제목을 검색하세요.">
+            <button type="submit">검색</button>
+         </form>
+
+
+
+
+
+      </div>
+   </header>
+   <!-- /header -->
+
+   <!-- section -->
+   <section>
+      <h2 class="blind">컨텐츠</h2>
+      <article class="main-slide">
+         <h3 class="blind">메인광고</h3>
+         <div class="mainfull">            
+            <div class="slide">             
+               <div class="swiper-container">
+                  <div class="swiper-wrapper">
+                     <div class="swiper-slide">
+                        <a href="#"><img src="img/slide1.jpg" alt="let's play at cgv"></a>
+                     </div>
+                     <div class="swiper-slide">
+                        <a href="#"><img src="img/slide2.jpg" alt="1월 이달의 cgv"></a>
+                     </div>
+                     <div class="swiper-slide">
+                        <a href="#"><img src="img/slide3.jpg" alt="2018 cgv calendar"></a>
+                     </div>
+                  </div>
+               </div>
+               <div class="pagination"></div>
+               <button class="prev">
+                  <i class="fas fa-chevron-left"></i>
+                  <span class="blind">이전</span>
+               </button>
+               <button class="next">
+                  <i class="fas fa-chevron-right"></i>
+                  <span class="blind">다음</span>
+               </button>
+            </div>
+         </div>
+      </article>
+
+      <article class="movie-selection center">
+         <h3>
+            MOVIE SELECTION
+            <!-- <img src="img/h3_movie_selection.gif" alt="movie selection"> -->
+         </h3>                     
+         <div class="row">
+            <div class="video">
+               <iframe  src="https://www.youtube.com/embed/LIZvbnOFOVg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>            
+            <a href="#"><img src="img/조커.jpg" alt="코코 1월 11일 대개봉"></a>
+         </div>         
+      </article>
+
+
+<!-- 무비차트 -->
+
+
+      <div class="wrap">
+         <h3>MOVIE CHART</h3>
+         <div class="product-list swiper-container">
+            <ul class="swiper-wrapper">
+               <li class="swiper-slide">
+                  <div class="list-item">
+
+                     <!-- 위에 영역 -->
+                     <div class="topbox" style="color: yellow;">1위</div>
+
+                     <div class="label-area">
+                        <span class="sale">12</span>
+                        <!-- <span class="hot">15</span>
+                        <span class="">청불</span> -->
+                     </div>
+                     <img src="img/백두산.jpg" alt="">
+                     <dl>
+                        <dt>백두산</dt>
+                        <dd>2019.12.19 개봉</dd>
+                     </dl>
+                     <div class="hidden">
+
+                        <!-- <button class="fas fa-search"></button> -->
+
+                        <!-- 내가만든버튼 -->
+                        <!-- <button type="button" class="clickbox1">상세정보</button> -->
+                        <div class="clickbox1">상세정보</div>
+                        <!-- <button type="button" class="clickbox2">예매하기</button> -->
+                        <div class="clickbox2">예매하기</div>
+
+                        <!-- <a href="#" class="clickbox"></a> -->
+                     <!-- <button class="clickbox"></button> -->
+
+                     </div>
+                  </div>
+               </li>
+               <li class="swiper-slide">
+                  <div class="list-item">
+
+                     <!-- 위에 영역 -->
+                     <div class="topbox">2위</div>
+
+                     <div class="label-area">
+                        <!-- <span class="sale">12</span> -->
+                        <span class="hot">15</span>
+                        <!-- <span class="">청불</span> -->
+                     </div>
+                     <img src="img/시동.jpg" alt="">
+                     <dl>
+                        <dt>시동</dt>
+                        <dd>2019.12.18 개봉</dd>
+                     </dl>
+                     <div class="hidden">
+
+                        <!-- <button class="fas fa-search"></button> -->
+
+                        <!-- 내가만든버튼 -->
+                        <!-- <button type="button" class="clickbox1">상세정보</button> -->
+                        <div class="clickbox1">상세정보</div>
+                        <!-- <button type="button" class="clickbox2">예매하기</button> -->
+                        <div class="clickbox2">예매하기</div>
+
+                        <!-- <a href="#" class="clickbox"></a> -->
+                     <!-- <button class="clickbox"></button> -->
+
+                     </div>
+                  </div>
+               </li>
+               <li class="swiper-slide">
+                  <div class="list-item">
+
+                     <!-- 위에 영역 -->
+                     <div class="topbox">3위</div>
+
+                     <div class="label-area">
+                        <span class="new">전체</span>
+                        <!-- <span class="hot">15</span>
+                        <span class="">청불</span> -->
+                     </div>
+                     <img src="img/겨울왕국.jpg" alt="">
+                     <dl>
+                        <dt>겨울왕국2</dt>
+                        <dd>2019.11.21 개봉</dd>
+                     </dl>
+                     <div class="hidden">
+
+                        <!-- <button class="fas fa-search"></button> -->
+
+                        <!-- 내가만든버튼 -->
+                        <!-- <button type="button" class="clickbox1">상세정보</button> -->
+                        <div class="clickbox1">상세정보</div>
+                        <!-- <button type="button" class="clickbox2">예매하기</button> -->
+                        <div class="clickbox2">예매하기</div>
+
+                        <!-- <a href="#" class="clickbox"></a> -->
+                     <!-- <button class="clickbox"></button> -->
+
+                     </div>
+                  </div>
+               </li>
+               <li class="swiper-slide">
+                  <div class="list-item">
+
+                     <!-- 위에 영역 -->
+                     <div class="topbox">4위</div>
+
+                     <div class="label-area">
+                        <!-- <span class="sale">12</span> -->
+                        <span class="new">전체</span>
+                        <!-- <span class="">청불</span> -->
+                     </div>
+                     <img src="img/신비한아파트.jpg" alt="">
+                     <dl>
+                        <dt>신비아파트 극장판 하늘도깨비 대 요르문간드</dt>
+                        <dd>2019.12.19 개봉</dd>
+                     </dl>
+                     <div class="hidden">
+
+                        <!-- <button class="fas fa-search"></button> -->
+
+                        <!-- 내가만든버튼 -->
+                        <!-- <button type="button" class="clickbox1">상세정보</button> -->
+                        <div class="clickbox1">상세정보</div>
+                        <!-- <button type="button" class="clickbox2">예매하기</button> -->
+                        <div class="clickbox2">예매하기</div>
+
+                        <!-- <a href="#" class="clickbox"></a> -->
+                     <!-- <button class="clickbox"></button> -->
+
+                     </div>
+                  </div>
+               </li>
+               <li class="swiper-slide">
+                  <div class="list-item">
+
+                     <!-- 위에 영역 -->
+                     <div class="topbox">5위</div>
+
+                     <div class="label-area">
+                        <span class="sale">12</span>
+                     </div>
+                     <img src="img/포드페라리.jpg" alt="">
+                     <dl>
+                        <dt>포드V페라리</dt>
+                        <dd>2019.12.04 개봉</dd>
+                     </dl>
+                     <div class="hidden">
+
+                        <!-- <button class="fas fa-search"></button> -->
+
+                        <!-- 내가만든버튼 -->
+                         <!-- <button type="button" class="clickbox1">상세정보</button> -->
+                        <div class="clickbox1">상세정보</div>
+                        <!-- <button type="button" class="clickbox2">예매하기</button> -->
+                        <div class="clickbox2">예매하기</div>
+
+                        <!-- <a href="#" class="clickbox"></a> -->
+                     <!-- <button class="clickbox"></button> -->
+
+                     </div>
+                  </div>
+               </li>
+               <li class="swiper-slide">
+                  <div class="list-item">
+
+                     <!-- 위에 영역 -->
+                     <div class="topbox">6위</div>
+
+                     <div class="label-area">
+                        <span class="sale">12</span>
+                        <!-- <span class="new">전체</span> -->
+                        <!-- <span class="">청불</span> -->
+                     </div>
+                     <img src="img/나이브스 아웃.jpg" alt="">
+                     <dl>
+                        <dt>나이브스 아웃</dt>
+                        <dd>2019.12.04 개봉</dd>
+                     </dl>
+                     <div class="hidden">
+
+                        <!-- <button class="fas fa-search"></button> -->
+
+                        <!-- 내가만든버튼 -->
+                        <!-- <button type="button" class="clickbox1">상세정보</button> -->
+                        <div class="clickbox1">상세정보</div>
+                        <!-- <button type="button" class="clickbox2">예매하기</button> -->
+                        <div class="clickbox2">예매하기</div>
+
+                        <!-- <a href="#" class="clickbox"></a> -->
+                     <!-- <button class="clickbox"></button> -->
+
+                     </div>
+                  </div>
+               </li>
+               <li class="swiper-slide">
+                  <div class="list-item">
+
+                     <!-- 위에 영역 -->
+                     <div class="topbox">7위</div>
+
+                     <div class="label-area">
+                        <span class="sale">12</span>
+                     </div>
+                     <img src="img/쥬만지.jpg" alt="">
+                     <dl>
+                        <dt>쥬만지-넥스트 레벨</dt>
+                        <dd>2019.12.11 개봉</dd>
+                     </dl>
+                     <div class="hidden">
+
+                        <!-- <button class="fas fa-search"></button> -->
+
+                        <!-- 내가만든버튼 -->
+                        <!-- <button type="button" class="clickbox1">상세정보</button> -->
+                        <div class="clickbox1">상세정보</div>
+                        <!-- <button type="button" class="clickbox2">예매하기</button> -->
+                        <div class="clickbox2">예매하기</div>
+
+                        <!-- <a href="#" class="clickbox"></a> -->
+                     <!-- <button class="clickbox"></button> -->
+
+                     </div>
+                  </div>
+               </li>
+            </ul>
+         </div>
+      </div>
+
+
+
+
+
+
+      <article class="event center">
+         <h3>
+            EVENT
+            <!-- <img src="img/h3_event.gif" alt="event"> -->
+         </h3>
+         <ul>
+            <li><a href="#"><img src="img/banner1.jpg" alt="1월 이달의 cgv"></a></li>
+            <li><a href="#"><img src="img/banner2.jpg" alt="1318클럽 감동 어드벤처 시사회"></a></li>
+            <li><a href="#"><img src="img/banner3.jpg" alt="new year 기획상품 출시"></a></li>
+            <li><a href="#"><img src="img/banner4.jpg" alt="나를 바꾸는 글쓰기"></a></li>
+         </ul>
+      </article>
+
+
+
+
+      
+
+
+
+
+
+   </section>
+   <!-- /section -->
+
+   <footer>
+      <div class="center">
+         <ul>
+            <li><a href="#">회사소개</a></li>
+            <li><a href="#">IR</a></li>
+            <li><a href="#">채용정보</a></li>
+            <li><a href="#">광고문의</a></li>
+            <li><a href="#">이용약관</a></li>
+         </ul>
+         <div class="info">
+            <h2><span class="blind">cgv</span></h2>
+            <address>
+               (04377)서울특별시 용산구 한강대로 23길 55, 아이파크몰 6층(한강로동)<br>
+               대표이사 : 최병환사업자등록번호 : 104-81-45690통신판매업신고번호 : 2017-서울용산-0662<br>
+               호스팅사업자 : CJ올리브네트웍스개인정보보호 책임자 : 정종민대표이메일 : cjcgvmaster@cj.netCGV고객센터 : 1544-1122
+            </address>
+            <small>&copy; CJ CGV. All Rights Reserved</small>
+         </div>
+      </div>
+   </footer>
+
+</body>
+</html>

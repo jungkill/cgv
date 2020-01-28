@@ -1,0 +1,209 @@
+@charset "UTF-8";
+
+
+
+
+body{
+
+
+
+
+    /* 이거 줘도 무관한가? */
+    width: 100%;
+
+
+
+
+
+}
+
+
+/* top-banner ======================================*/
+#top-banner{
+    display: none;
+    
+}
+
+
+.sign{
+    position: relative;
+    width:767px;
+    height: 20px;
+    margin: auto;
+    
+}
+
+
+
+
+.center{
+    position: relative;
+    width:100%;
+    margin: auto;
+}
+
+.gnb h1{
+    display: none;
+}
+
+header .gnb h2{
+    padding-top: 6px;
+}
+
+.gnb h2 a{
+    display: block;
+}
+
+.gnb h2 a img{
+    height: 25px;
+    /* 이 방법도 있지만 소수점 나옴 */
+    /* transform: scale(0.7); */
+}
+
+
+
+
+
+
+
+
+header{
+    height: 60px;
+    background: rebeccapurple;
+}
+
+header form{
+    width: 210px;
+    position: absolute;
+    top: 4px;
+    left: 0;
+}
+
+header .sign{
+    width: 100%;
+}
+
+nav{
+    display: none;
+}
+
+
+
+
+/* 무비셀렉션 */
+.movie-selection{
+
+    
+}
+.movie-selection .row{
+    height: auto;
+ }
+ .movie-selection .video{
+    margin-right:0; 
+    height: 400px;  
+ }   
+ .movie-selection a{
+    position: static;
+ }
+ .movie-selection img{
+    max-width: 100%;
+    height: auto;
+ }
+ 
+
+
+
+
+
+
+/* .movie-selection img{
+   width: 240px;
+   height: 388px;
+} */
+
+
+
+
+/* .wrap{ */
+
+    /* width: 100%; */
+    
+/* 둘다 가능? */
+   /* height: auto; */
+   /* height: 100%; */
+   /* padding-bottom: 0; */
+
+/* } */
+
+
+
+/* 
+.product-list{
+   top: 0;
+   padding: 20px 0;
+} */
+
+.topbox {
+    font-size: 20px;
+}
+
+
+
+/* 무비셀렉션 */
+.movie-selection h3 {
+    font-size: 30px;
+    text-align: center;
+    padding: 100px 0 50px;
+    color: #e71a0f;
+}
+
+
+
+/* 무비차트 */
+.wrap h3 {
+    font-size: 30px;
+    padding: 100px 0 30px;
+}
+
+
+
+/* 이벤트 */
+.event h3 {
+    font-size: 30px;
+    text-align: center;
+    padding: 80px 0 50px;
+    color: #e71a0f;
+}
+
+
+
+
+
+
+
+.event ul li {
+    float: none;
+    /* margin-right: 6.66px; */
+}
+
+
+
+
+.event ul li{
+   position: relative;
+   width: 100%;
+   height: 0;
+   padding-bottom: 75.25%;
+}
+
+.event ul li a img{
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+}
+
+
+
+

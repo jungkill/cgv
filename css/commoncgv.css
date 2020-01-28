@@ -1,0 +1,786 @@
+@charset "UTF-8";
+
+/* reset, common ======================================*/
+*{margin: 0; padding: 0;}
+body{background: #fdfcf0; font-family: Arial, Helvetica, sans-serif;}
+li{list-style: none;}
+a{color:#000; text-decoration: none;}
+button{border:none; outline: none; background: none; cursor: pointer;}
+img{vertical-align: top;}
+.blind{position: absolute; left:-9999px; font-size: 0;}
+.center{
+   /* width 또는 max-width 확인하기 */
+   position: relative; 
+   max-width: 980px;
+   margin: auto;
+}
+
+/* top-banner ======================================*/
+#top-banner{
+   background: #c98b52
+}
+
+#top-banner button{
+   position: absolute; 
+   right:0; top:5px;
+   color:#fff;
+   font-size: 1.5em;
+}
+
+/* header ========================================= */
+header{
+   background: #fef8dc;
+   height: 274px;
+}
+header .gnb h1{
+   position: absolute;
+    left: 0;
+    top: 100px;
+}
+
+.gnb h1 img{
+   width: 200px;
+   height: 27px;
+}
+
+
+.si{
+   background: #e71a0f;
+}
+
+header .sign{
+   max-width: 980px;
+   height: 20px;
+   margin: auto;
+}
+header .sign a{
+   float: left; 
+   font-size: 12px;
+   color: #fff;
+}
+header .sign a:nth-child(1){
+   background: url(../img/bg_v_line.gif) no-repeat right center;
+   padding-right: 5px;
+   margin-right: 4px;
+}
+
+header .gnb h2{
+   padding-top: 70px;
+}
+
+/* 1depth */
+.navi > li {
+   position: relative;
+   float: left;
+   width: 25%;
+}
+
+.navi>li>a{
+   position: relative;
+   display: block;
+   text-align: center;
+   color: #333;
+   line-height: 50px;
+   transition: 0.5s;
+}
+
+
+
+
+
+
+
+.navi>li>a>span{}
+.navi>li>a>span::after{
+   content: '';
+   display: block;
+   width: 0%;
+   height: 4px;
+   /* 선이 중앙에서부터 균등하게 그려지기 위해서 */
+   margin: auto;
+   background: #e71a0f;
+   transition: width 0.2s;
+}
+.navi>li:hover>a>span::after{
+   width: 100%;
+}
+.navi>li:hover>a{color: #e71a0f;}
+
+
+
+
+
+/* 2depth */
+.navi ul{
+   overflow: hidden;
+   height: 0;
+   transition: height 0.3s;
+   /* display: none; */
+   /* background: cornflowerblue; */
+   /* width: 100%; */
+   /* left:0; */
+   /* position: absolute; */
+}
+.navi:hover ul{
+   height: 200px;
+}
+/* .navi>li:hover ul{
+   height: 50px;
+} */
+
+
+
+/* 뒷배경 */
+
+
+
+
+
+
+
+
+
+
+.gnb-bg{
+   z-index: -1;
+   position: absolute;
+   width: 100%;
+   top:54px;
+   left:0;
+   height: 0;
+   transition: height 0.3s, border-bottom 0.3s;
+   background: #fff;
+}
+
+
+/* 2뎁스 배경 */
+.navi:hover+.gnb-bg{
+   height: 250px;
+   border-bottom:2px solid #000;
+}
+
+
+
+
+
+.navi .su li a{
+   display: block;
+   color:#848484;
+   font-size: 14px;
+   /* height: 30px; */
+   /* line-height: 30px;
+   margin-left:46px; */
+}
+.navi .su li a:hover{
+   color:#464646;
+}
+
+
+
+
+
+
+.navi ul li{
+   display: inline-block;
+   line-height: 50px;
+
+
+
+
+   /* 2뎁스 위아래 여백 */
+   margin: 18px 0;
+
+
+
+
+
+}
+.navi ul li:hover a{text-decoration: underline;}
+
+
+
+
+
+
+.su > li{
+   width: 100%;
+   text-align: center;
+}
+
+.su > li a{
+   font-size: 1.000em;
+   display: inline-block;
+
+
+
+
+   /* 2뎁스 패딩 넣을지 말지 */
+   /* padding: 14px 10px; */
+
+
+
+
+
+   line-height: 1.2em;
+   color: #333;
+   text-align: center;
+   font-weight: 400;
+   letter-spacing: -0.025em;
+}
+
+
+
+/* 내가 추가 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+header .gnb{
+   position: relative; 
+   text-align: center;
+}
+
+
+
+
+
+
+
+header .gnb nav{
+
+   max-width: 980px;
+   width: 100%;
+
+/* 다 만들고 주석처리하기 */
+   z-index: 2;
+   /* margin-top: 4px; */
+
+   position: absolute;
+   top: 200px;
+   left: 50%;
+   transform: translateX(-50%);
+}
+
+
+
+
+
+
+
+
+
+
+header .gnb nav ul li a{font-size: 18px; font-weight: bold;}
+
+
+
+
+
+/* 검색창? */
+
+
+
+
+
+header form{
+   z-index: 10px;
+   width: 210px;
+   position: absolute;
+   top: 100px;
+   right: 0;
+}
+header form input{
+   float: left;
+   width: 160px; height: 30px;
+   padding: 0 10px;
+   border:1px solid #cacaca;
+   box-sizing: border-box;
+
+}
+header form button{   
+   width: 50px; height: 30px;
+   background: #e71a0f; color:#fff;
+   font-weight: bold;
+}
+
+
+
+
+
+
+/* section ===================================================== */
+/* main-slide */
+.main-slide{
+
+
+}
+.mainfull{
+   width: 100%;
+   height: 100%;
+}
+
+
+/* .swiper-container{
+   width: 100%;
+   height: 100%;
+} */
+
+
+.main-slide img{
+   width: 100%;
+   height: auto;
+}
+
+
+
+.main-slide .slide{
+   position: relative;
+   overflow: hidden;
+   height: auto;
+}
+.main-slide .slide .pagination{
+   z-index: 1;
+   position: absolute;
+   bottom:15px;
+   left:50%; 
+   transform: translateX(-50%);
+}
+.main-slide .slide .pagination .swiper-pagination-bullet{
+   float: left;
+   width: 15px; height: 15px;
+   margin:0 5px;
+   border-radius: 50%;
+   background: #fff;
+   box-sizing: border-box;
+   opacity: 1;
+}
+.main-slide .slide .pagination .swiper-pagination-bullet-active{
+   border:3px solid #e71a0f; 
+   background: none;
+}
+
+.main-slide .slide button{
+   z-index: 1;
+   position: absolute;
+   top:50%; transform: translateY(-50%);
+   color:#fff; 
+   font-size: 3em;
+   opacity: 0;
+   transition: 0.5s;
+}
+.main-slide .slide button.prev{left:-30px;}
+.main-slide .slide button.next{right:-30px;}
+.main-slide .slide:hover button.prev{left:20px; opacity: 1;}
+.main-slide .slide:hover button.next{right:20px; opacity: 1;}
+
+
+
+
+
+
+/* movie-selection & event */
+
+
+
+
+/* 제목 */
+article h3{
+   font-size: 48px;
+   text-align: center;
+   color: #e71a0f;
+   padding: 80px 0 50px;
+   /* background: url(../img/bg_h3_line.jpg) repeat-x center; */
+}
+
+
+
+/* 
+
+article h3 img{
+   padding: 30px 20px;
+   background: #fdfcf0;
+      
+} */
+
+
+
+
+
+.movie-selection{
+
+/* 어디서 가져온거 */
+   /* position: relative;
+   width: 100%;
+   height: 0;
+   padding-bottom: 56.25%; */
+   overflow: hidden;
+}
+.movie-selection .row{
+   position: relative;
+   height: 380px;
+}
+.movie-selection .video{
+   margin-right:260px;   
+   height: 100%;
+}
+.movie-selection .video iframe{
+   width: 100%;   
+   height: 100%;
+}
+.movie-selection a{
+   position: absolute;
+   top:0;
+   right:0;
+   bottom:0;
+}
+
+.movie-selection img{
+   height: 380px;
+}
+
+
+
+
+
+
+.event ul{overflow: hidden;}
+.event ul li{float: left; margin-right:6.66px;}
+.event ul li:last-child{margin: 0;}
+
+
+
+
+
+
+
+
+
+
+
+/* 영화차트 */
+
+
+
+
+
+/* 상단 순위표 */
+.topbox{
+   font-size: 30px;
+   font-weight: bold;
+   padding: 10px 0;
+   /* top: 0; */
+   width: 100%;
+   height: 100%;
+   background: #000;
+   color: #fff;
+   /* #e71a0f */
+   text-align: center;
+
+   
+}
+
+
+
+
+
+
+.wrap{
+   position: relative;
+
+   max-width: 980px;
+   margin: auto;
+   height: 100%;
+
+   /* height: 780px; */
+
+
+
+
+   /* 무비차트 배경색 */
+   /* background: rebeccapurple; */
+}
+
+
+
+
+
+
+/* 제목 */
+.wrap h3{
+
+
+
+
+   font-size: 48px;
+   text-align: center;
+   color: #e71a0f;
+   padding: 80px 0 30px;
+   /* background: url(../img/bg_h3_line.jpg) repeat-x center; */
+
+   /* line-height: 100px; */
+
+   /* 제목 아래 선 */
+   /* border-bottom:1px solid #000; */
+}
+
+
+
+
+
+
+.product-list{
+   position: relative;
+   padding: 20px 0;
+   /* max-width: 1200px; */
+   /* margin: auto; */
+
+
+
+
+
+}
+
+
+
+
+
+
+.product-list ul{}
+.product-list ul li{
+   float: left;
+   width: 33.33%;
+}
+.product-list ul li .list-item{
+   position: relative;
+   border:1px solid #000;
+   margin:10px;
+   /* 프레임 밖으로 나간 hidden영역 숨기기 */
+   overflow: hidden;
+   transition: 1s;
+   background: #fff;
+}
+.product-list ul li .list-item:hover{
+   transform: scale(1.1);
+}
+
+.product-list ul li .list-item .label-area{
+   position: absolute;
+   top:75px;
+
+   left: 15px;
+   /* 인라인의 성질을 가진 자식을 가운데로 보낸다. */
+   text-align: center;
+
+
+
+}
+.product-list ul li .list-item .label-area span{
+   display: inline-block;
+   width: 50px; height: 50px;
+   border-radius: 50%;         
+   text-align: center;
+   line-height: 50px;
+   text-transform: uppercase;
+   font-size: 14px;
+   color:#fff;
+}
+
+
+
+
+
+.product-list ul li .list-item .label-area .new{background: #52ae35;}
+.product-list ul li .list-item .label-area .sale{background: #006cc7;}
+.product-list ul li .list-item .label-area .hot{background: #ff7200;}
+
+.product-list ul li .list-item img{width: 100%; transition: 1s;}
+/* 이미지에 호버시 속 이미지 확대 */
+/* .product-list ul li .list-item:hover img{transform: scale(1.2);} */
+
+.product-list ul li .list-item dl{
+   background: #000;
+   color:#fff;
+   padding: 20px;
+}
+.product-list ul li .list-item dl dt{
+   white-space: nowrap;
+   text-overflow: ellipsis;
+   overflow: hidden;
+   font-weight: bold; 
+   padding-bottom: 5px;
+}
+
+/* 숨겨진 영역 */
+.product-list .hidden{
+   /* list-item의 범위를 기준으로 100%채워진 영역을 가지게 된다. */
+   position: absolute;
+   top:0; left:0;
+   /* max-width: 302px; */
+   width: 100%; height: 100%;
+   background: rgba(0,0,0,0.5);
+   transition: 1s;
+   /* 1. 기본숨기기 */
+   /* display: none; */
+   /* opacity: 0;
+   visibility: hidden; */
+   /* 2. 왼쪽에서 오른쪽으로 나오기 */
+   /* left:-100%; */
+   /* 3. 오른쪽에서 왼쪽으로 나오기 */
+   /* left:100%; */
+   /* 4. 위쪽에서 아래쪽으로 나오기 */
+   top:-100%;
+   /* 5. 아래쪽에서 위쪽으로 나오기 */
+   /* top:100%; */
+}
+.product-list .list-item:hover .hidden{
+   /* 1. 기본숨기기 */
+   /* display: block; */
+   /* opacity: 1;
+   visibility: visible; */
+   /* 2. 왼쪽에서 오른쪽으로 나오기 */
+   /* left:0; */
+   /* 3. 오른쪽에서 왼쪽으로 나오기 */
+   /* left:0; */
+   /* 4. 위쪽에서 아래쪽으로 나오기 */
+   /* top:0; */
+   /* 5. 아래쪽에서 위쪽으로 나오기 */
+   top:0;
+}
+
+/* .produ
+ct-list .hidden button{ */
+   /* hidden의 범위를 기준으로 가운데가는 공식을 사용 */
+   /* 중첩된 구조에서 각 부모에 position이 걸려있는 경우 
+      가장 가까운 부모를 따라감 */
+   /* position: absolute;
+   top:50%; left:50%; 
+   transform: translate(-50%, -50%);
+   background: none;
+   border:none; 
+   color:#fff; 
+   font-size: 30px;  
+   outline: none;     
+   cursor: pointer;
+} */
+
+
+
+
+/* .hidden{
+   width: auto;
+   height: auto;
+} */
+
+
+
+
+
+/* 차트 숨겨진 화면 버튼 */
+.clickbox1{
+   border: 1px solid #e71a0f;
+   
+   /* border-radius: 25%; */
+   background: #fff;
+   cursor: pointer;
+   color: #e71a0f;
+
+   
+   max-width: 150px;
+   width: 100%;
+   max-height: 50px;
+   height: 100%;
+   
+   text-align: center;
+   line-height: 50px;
+   
+   position: absolute;
+   top:44%; left:50%; 
+   transform: translate(-50%, -50%);
+
+   /* float: left;
+   left: 50%; */
+   /* display: block; */
+   
+}
+
+.clickbox2{
+   border: 1px solid #e71a0f;
+   cursor: pointer;
+   position: absolute;
+   top:56%; left:50%; 
+   transform: translate(-50%, -50%);
+   background: #fff;
+   color: #e71a0f;
+
+   max-width: 150px;
+   width: 100%;
+   max-height: 50px;
+   height: 100%;
+
+   text-align: center;
+   line-height: 50px;
+}
+
+.clickbox1:hover{
+   color: #fff;
+   background: #e71a0f;
+
+}
+.clickbox2:hover{
+   color: #fff;
+   background: #e71a0f;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/* footer =================================================== */
+footer{
+   height: 250px;
+   margin-top: 80px;
+   border-top:1px solid #949494;
+   background: url(../img/bg_footer_com.gif) repeat-x bottom;
+}
+footer ul{overflow: hidden; margin: 20px 0;}
+footer ul li{
+   float: left; 
+   padding-right:10px;
+   margin-right:9px;
+   background: url(../img/bg_v_line.gif) no-repeat right center;
+}
+footer ul li:last-child{background: none;}
+footer ul li a{color:#444; font-size: 14px;}
+
+footer .info{position: relative;}
+footer .info h2{
+   position: absolute;
+   width: 100px; height: 50px;
+   background: url(../img/sprite.png) no-repeat -141px -317px;
+}
+footer .info address{
+   margin-left: 110px;
+   font-size: 12px;
+   font-style: normal;
+}
+footer .info small{
+   position: absolute;
+   right:0; bottom:0;
+}
